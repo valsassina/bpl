@@ -1,0 +1,44 @@
+# Copyright © 2025 Luca Valsassina
+# SPDX-License-Identifier: MIT
+
+Checks: >
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+
+  cert-*,
+  clang-analyzer-*,
+
+  cppcoreguidelines-*,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-macro-usage,
+  -cppcoreguidelines-missing-std-forward,
+  -cppcoreguidelines-no-malloc,
+  -cppcoreguidelines-owning-memory,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+
+  misc-*,
+  -misc-no-recursion,
+
+  modernize-*,
+  -modernize-use-auto,
+  -modernize-use-nodiscard,
+
+  performance-*,
+
+  portability-*,
+  -portability-avoid-pragma-once,
+
+  readability-*,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-named-parameter,
+  -readability-uppercase-literal-suffix,
+  -readability-use-concise-preprocessor-directives,
+
+  -*-avoid-c-arrays,
+CheckOptions:
+  cppcoreguidelines-avoid-do-while.IgnoreMacros: true
+  misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic: true
+FormatStyle: file
+HeaderFilterRegex: ".*"
+UseColor: true

@@ -1,0 +1,215 @@
+{
+	"version": 6,
+	"configurePresets": [
+		{
+			"name": "base",
+			"hidden": true,
+			"generator": "Ninja Multi-Config",
+			"binaryDir": "${sourceDir}/build",
+			"cacheVariables": {
+				"CMAKE_CXX_STANDARD": "20",
+				"CMAKE_CXX_VISIBILITY_PRESET": "hidden",
+				"CMAKE_EXPORT_COMPILE_COMMANDS": true
+			}
+		},
+		{
+			"name": "gcc",
+			"displayName": "GCC",
+			"inherits": "base",
+			"cacheVariables": {
+				"CMAKE_CXX_COMPILER": "g++"
+			}
+		},
+		{
+			"name": "clang",
+			"displayName": "Clang",
+			"inherits": "base",
+			"cacheVariables": {
+				"CMAKE_CXX_COMPILER": "clang++",
+				"CMAKE_OSX_SYSROOT": "macosx"
+			}
+		},
+		{
+			"name": "appleclang",
+			"displayName": "Apple Clang",
+			"inherits": "base",
+			"cacheVariables": {
+				"CMAKE_CXX_COMPILER": "c++"
+			}
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "base",
+			"hidden": true
+		},
+		{
+			"name": "debug",
+			"displayName": "Debug",
+			"configuration": "Debug",
+			"hidden": true,
+			"inherits": "base"
+		},
+		{
+			"name": "release",
+			"displayName": "Release",
+			"configuration": "RelWithDebInfo",
+			"hidden": true,
+			"inherits": "base"
+		},
+		{
+			"name": "gcc-debug",
+			"displayName": "GCC Debug",
+			"inherits": "debug",
+			"configurePreset": "gcc"
+		},
+		{
+			"name": "gcc-release",
+			"displayName": "GCC Release",
+			"inherits": "release",
+			"configurePreset": "gcc"
+		},
+		{
+			"name": "clang-debug",
+			"displayName": "Clang Debug",
+			"inherits": "debug",
+			"configurePreset": "clang"
+		},
+		{
+			"name": "clang-release",
+			"displayName": "Clang Release",
+			"inherits": "release",
+			"configurePreset": "clang"
+		},
+		{
+			"name": "appleclang-debug",
+			"displayName": "Apple Clang Debug",
+			"inherits": "debug",
+			"configurePreset": "appleclang"
+		},
+		{
+			"name": "appleclang-release",
+			"displayName": "Apple Clang Release",
+			"inherits": "release",
+			"configurePreset": "appleclang"
+		}
+	],
+	"testPresets": [
+		{
+			"name": "base",
+			"hidden": true,
+			"output": {
+				"outputOnFailure": true
+			},
+			"execution": {
+				"noTestsAction": "error",
+				"stopOnFailure": true,
+				"jobs": 0
+			}
+		},
+		{
+			"name": "debug",
+			"hidden": true,
+			"configuration": "Debug",
+			"inherits": "base"
+		},
+		{
+			"name": "release",
+			"hidden": true,
+			"configuration": "RelWithDebInfo",
+			"inherits": "base"
+		},
+		{
+			"name": "gcc-debug",
+			"displayName": "GCC Debug",
+			"inherits": "debug",
+			"configurePreset": "gcc"
+		},
+		{
+			"name": "gcc-release",
+			"displayName": "GCC Release",
+			"inherits": "release",
+			"configurePreset": "gcc"
+		},
+		{
+			"name": "clang-debug",
+			"displayName": "Clang Debug",
+			"inherits": "debug",
+			"configurePreset": "clang"
+		},
+		{
+			"name": "clang-release",
+			"displayName": "Clang Release",
+			"inherits": "release",
+			"configurePreset": "clang"
+		},
+		{
+			"name": "appleclang-debug",
+			"displayName": "Apple Clang Debug",
+			"inherits": "debug",
+			"configurePreset": "appleclang"
+		},
+		{
+			"name": "appleclang-release",
+			"displayName": "Apple Clang Release",
+			"inherits": "release",
+			"configurePreset": "appleclang"
+		}
+	],
+	"workflowPresets": [
+		{
+			"name": "gcc",
+			"displayName": "Workflow for the GCC toolchain",
+			"steps": [
+				{
+					"type": "configure",
+					"name": "gcc"
+				},
+				{
+					"type": "build",
+					"name": "gcc-debug"
+				},
+				{
+					"type": "test",
+					"name": "gcc-debug"
+				}
+			]
+		},
+		{
+			"name": "clang",
+			"displayName": "Workflow for the Clang toolchain",
+			"steps": [
+				{
+					"type": "configure",
+					"name": "clang"
+				},
+				{
+					"type": "build",
+					"name": "clang-debug"
+				},
+				{
+					"type": "test",
+					"name": "clang-debug"
+				}
+			]
+		},
+		{
+			"name": "appleclang",
+			"displayName": "Workflow for the Apple Clang toolchain",
+			"steps": [
+				{
+					"type": "configure",
+					"name": "appleclang"
+				},
+				{
+					"type": "build",
+					"name": "appleclang-debug"
+				},
+				{
+					"type": "test",
+					"name": "appleclang-debug"
+				}
+			]
+		}
+	]
+}
